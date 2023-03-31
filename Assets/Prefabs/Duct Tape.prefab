@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5657306147767522675}
   - component: {fileID: 4870932640582505576}
+  - component: {fileID: 313008949632614034}
+  - component: {fileID: 7925744920252562341}
   - component: {fileID: 8928120720695183190}
   m_Layer: 0
   m_Name: Duct Tape
@@ -46,6 +48,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableModes: 3
+  shootOrigin: {fileID: 0}
+--- !u!114 &313008949632614034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195887627820481961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 30
+  tapePrefab: {fileID: 0}
+--- !u!114 &7925744920252562341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195887627820481961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f23dab86267b5e4699559edfa227b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 30
+  tapePrefab: {fileID: 0}
 --- !u!212 &8928120720695183190
 SpriteRenderer:
   m_ObjectHideFlags: 0
