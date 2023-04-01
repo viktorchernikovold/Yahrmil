@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public static Player Main { get; private set; }
 
+    public DuctTape DuctTape { get; private set; }
     public Rigidbody2D UseRigidbody { get; private set; }
     public PlayerModule[] Modules { get; private set; }
 
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     {
         UseRigidbody = GetComponentInChildren<Rigidbody2D>();
         Modules = GetComponentsInChildren<PlayerModule>();
+        DuctTape = GetComponentInChildren<DuctTape>();
         foreach(PlayerModule m in Modules)
         {
             m.Init(this);

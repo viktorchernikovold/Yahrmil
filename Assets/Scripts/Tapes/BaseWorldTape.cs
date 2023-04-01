@@ -7,35 +7,70 @@ public abstract class BaseWorldTape : MonoBehaviour
 {
     public Vector2 Beginning;
     public Vector2 End;
-    private LineRenderer lRenderer;
-    private EdgeCollider2D eCollider;
+    private LineRenderer _renderer;
+    private EdgeCollider2D _collider;
 
-    public virtual void OnPlayerEnter(Player player) { }
-    public virtual void OnPlayerStay(Player player) { }
-    public virtual void OnPlayerExit(Player player) { }
+    public virtual void OnPlayerEnter(Player player, ContactPoint2D contact) { }
+    public virtual void OnPlayerStay(Player player, ContactPoint2D contact) { }
+    public virtual void OnPlayerExit(Player player, ContactPoint2D contact) { }
 
     public void UpdateLine()
     {
-        if (lRenderer.positionCount != 2)
+        if (_renderer.positionCount != 2)
         {
-            lRenderer.positionCount = 2;
+            _renderer.positionCount = 2;
         }
-        lRenderer.SetPosition(0, transform.position + (Vector3)Beginning);
-        lRenderer.SetPosition(1, transform.position + (Vector3)End);
+        _renderer.SetPosition(0, transform.position + (Vector3)Beginning);
+        _renderer.SetPosition(1, transform.position + (Vector3)End);
     }
     public void UpdateCollider()
     {
         List<Vector2> points = new();
         points.Add(Beginning);
         points.Add(End);
-        eCollider.SetPoints(points);
+        _collider.SetPoints(points);
     }
 
+    #region Unity callbacks
     private void Awake()
     {
-        lRenderer = GetComponent<LineRenderer>();
-        eCollider = GetComponent<EdgeCollider2D>();
+        _renderer = GetComponent<LineRenderer>();
+        _collider = GetComponent<EdgeCollider2D>();
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D p in collision.contacts)
+        {
+            if (p.collider.CompareTag("Player"))
+            {
+                Player pl = p.collider.GetComponent<Player>();
+                OnPlayerEnter(pl, p);
+            }
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D p in collision.contacts)
+        {
+            if (p.collider.CompareTag("Player"))
+            {
+                Player pl = p.collider.GetComponent<Player>();
+                OnPlayerStay(pl, p);
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D p in collision.contacts)
+        {
+            if (p.collider.CompareTag("Player"))
+            {
+                Player pl = p.collider.GetComponent<Player>();
+                OnPlayerExit(pl, p);
+            }
+        }
+    }
+    #endregion
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -43,6 +78,6 @@ public abstract class BaseWorldTape : MonoBehaviour
         UpdateLine();
         UpdateCollider();
     }
-#endif
+    #endif
 }
 

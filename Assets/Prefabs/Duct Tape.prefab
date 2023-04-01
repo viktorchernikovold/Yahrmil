@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5657306147767522675}
   - component: {fileID: 4870932640582505576}
-  - component: {fileID: 313008949632614034}
-  - component: {fileID: 7925744920252562341}
   - component: {fileID: 8928120720695183190}
   m_Layer: 0
   m_Name: Duct Tape
@@ -31,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8510546421291982424}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,36 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b7d379b729b46f88c05078d34f8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveMode: 1
   AvailableModes: 3
-  shootOrigin: {fileID: 0}
---- !u!114 &313008949632614034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195887627820481961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Length: 30
-  tapePrefab: {fileID: 0}
---- !u!114 &7925744920252562341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195887627820481961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f23dab86267b5e4699559edfa227b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Length: 30
-  tapePrefab: {fileID: 0}
+  ModeRef: {fileID: 0}
+  shootOrigin: {fileID: 8510546421291982424}
 --- !u!212 &8928120720695183190
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -129,3 +102,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4513697452859826437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8510546421291982424}
+  - component: {fileID: 8359634103267488787}
+  - component: {fileID: 9092968045564002962}
+  m_Layer: 0
+  m_Name: Shoot Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8510546421291982424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513697452859826437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5657306147767522675}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8359634103267488787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513697452859826437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
+  tapePrefab: {fileID: 1234190397262212320, guid: 10cd4a8cf8b47ec43922956cbfe5f926, type: 3}
+--- !u!114 &9092968045564002962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513697452859826437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
+  tapePrefab: {fileID: 0}
