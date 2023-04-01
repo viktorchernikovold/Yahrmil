@@ -39,6 +39,7 @@ public class PlaceTapeMode : BaseTapeMode
         }
         else
         {
+            int old = Length;
             Length -= wl;
             Progress = 0;
             CurrentTape = null;

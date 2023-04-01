@@ -32,6 +32,7 @@ public class DuctTape : MonoBehaviour
     /// </summary>
     public BaseTapeMode ModeRef /*{ get; private set; }*/ = null;
 
+    public event Action<int, int> OnLengthChange;
     public event Action<DuctTapeMaterial> OnMaterialChange;
 
     [SerializeField] Transform shootOrigin;
@@ -65,9 +66,11 @@ public class DuctTape : MonoBehaviour
         ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
         if (oldMode != ModeRef)
         {
+            oldMode.OnLengthChange -= OnLengthChange;
             oldMode.OnModeLeave();
             OnMaterialChange?.Invoke(CurrentMaterial);
             ModeRef.OnModePick();
+            ModeRef.OnLengthChange += OnLengthChange;
         }
     }
     #region Helpers
@@ -83,6 +86,7 @@ public class DuctTape : MonoBehaviour
         modes = GetComponentsInChildren<BaseTapeMode>();
         ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
         ModeRef.OnModePick();
+        ModeRef.OnLengthChange += OnLengthChange;
         OnMaterialChange?.Invoke(CurrentMaterial);
     }
     
