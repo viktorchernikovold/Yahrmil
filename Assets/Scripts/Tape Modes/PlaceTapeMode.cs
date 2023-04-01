@@ -39,7 +39,7 @@ public class PlaceTapeMode : BaseTapeMode
     public override void End(Vector2 pos)
     {
         CurrentTape.End = pos;
-        int wl = Mathf.FloorToInt(Vector2.Distance(CurrentTape.Beginning, CurrentTape.End));
+        int wl = Mathf.CeilToInt(Vector2.Distance(CurrentTape.Beginning, CurrentTape.End));
         if (wl > Length)
         {
             Interrupt();
