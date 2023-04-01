@@ -5,14 +5,36 @@ using UnityEngine;
 [RequireComponent(typeof(EdgeCollider2D))]
 public abstract class BaseWorldTape : MonoBehaviour
 {
-    public Vector2 Beginning;
-    public Vector2 End;
+    public Vector2 Beginning
+    {
+        get => _beginning;
+        set
+        {
+            _beginning = value - (Vector2)transform.position;
+        }
+    }
+    public Vector2 End
+    {
+        get => _ending;
+        set
+        {
+            _ending = value - (Vector2)transform.position;
+            UpdateLine();
+            UpdateCollider();
+        }
+    }
+    private Vector2 _beginning;
+    private Vector2 _ending;
     private LineRenderer _renderer;
     private EdgeCollider2D _collider;
 
     public virtual void OnPlayerEnter(Player player, ContactPoint2D contact) { }
     public virtual void OnPlayerStay(Player player, ContactPoint2D contact) { }
     public virtual void OnPlayerExit(Player player, ContactPoint2D contact) { }
+    public virtual void Destroy()
+    {
+        Destroy(gameObject);
+    }
 
     public void UpdateLine()
     {

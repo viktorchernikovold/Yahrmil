@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fca0291dcf6e2547849d86c42f506fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beginning: {x: 0, y: 0}
-  End: {x: 0, y: 0}
   BounceForce: 200
   timer: 0
 --- !u!120 &7084786626735278935

@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40152eeaa217e064f82871662bfc5f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Beginning: {x: 0, y: 0}
-  End: {x: 0, y: 0}
   MaxSpeedMultiplier: 2
   Acceleration: 100
 --- !u!120 &7084786626735278935
