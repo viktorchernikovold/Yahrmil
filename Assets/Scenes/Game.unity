@@ -597,6 +597,18 @@ PrefabInstance:
       propertyPath: AllowedMaterials
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6783450033356784695, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783450033356784695, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783450033356784695, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.536
+      objectReference: {fileID: 0}
     - target: {fileID: 7521397483377983309, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -645,7 +657,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7521397483377983313, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 48097959970113028, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
 --- !u!1 &1618761995
 GameObject:
