@@ -5,12 +5,11 @@ public class uGUI_TapeMaterial : MonoBehaviour
 {
     public DuctTape DuctTapeRef;
     public Image Icon;
-    public Text Text;
+    public Text Title;
+    public Text Length;
     public Color[] Colors = new Color[4];
     void Start()
     {
-        Icon = GetComponentInChildren<Image>();
-        Text = GetComponentInChildren<Text>();
         DuctTapeRef = Player.Main.DuctTape;
         DuctTapeRef.OnMaterialChange += UpdateIcon;
         UpdateIcon(DuctTapeRef.CurrentMaterial);
@@ -18,6 +17,7 @@ public class uGUI_TapeMaterial : MonoBehaviour
     private void UpdateIcon(DuctTapeMaterial Material)
     {
         Icon.color = Colors[DuctTapeRef.GetMaterialIndex(Material)];
-        Text.text = DuctTapeRef.ModeRef.Name + " Tape";
+        Title.text = string.Format("{0} Tape", DuctTapeRef.ModeRef.Name);
+        Length.text = string.Format("{0} meters left", DuctTapeRef.ModeRef.Length);
     }
 }
