@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2522687468829655155}
   - component: {fileID: 7084786626735278935}
   - component: {fileID: 7363271020515467611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Speed Tape
   m_TagString: Tape
   m_Icon: {fileID: 0}

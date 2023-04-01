@@ -23,6 +23,15 @@ public abstract class BaseWorldTape : MonoBehaviour
             UpdateCollider();
         }
     }
+    public Vector2 BeginningWp
+    {
+        get => (Vector2)transform.position + _beginning;
+    }
+    public Vector2 EndWp
+    {
+        get => (Vector2)transform.position + _ending;
+    }
+
     private Vector2 _beginning;
     private Vector2 _ending;
     private LineRenderer _renderer;
