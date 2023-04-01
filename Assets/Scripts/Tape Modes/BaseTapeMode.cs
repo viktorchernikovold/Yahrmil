@@ -30,4 +30,5 @@ public abstract class BaseTapeMode : MonoBehaviour
     public virtual void Interrupt() { }
     public virtual void OnModePick() { }
     public virtual void OnModeLeave() { }
+    public Color GetColor() => tapePrefab.Color;
 }

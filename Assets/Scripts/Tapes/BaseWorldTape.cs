@@ -5,12 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(EdgeCollider2D))]
 public abstract class BaseWorldTape : MonoBehaviour
 {
+    public TapeVertex BeginningVertex;
+    public TapeVertex EndingVertex;
     public Vector2 Beginning
     {
         get => _beginning;
         set
         {
             _beginning = value - (Vector2)transform.position;
+            BeginningVertex.SetPosition(_beginning);
+            BeginningVertex.Show();
+            BeginningVertex.Rotate = true;
         }
     }
     public Vector2 End
@@ -19,18 +24,16 @@ public abstract class BaseWorldTape : MonoBehaviour
         set
         {
             _ending = value - (Vector2)transform.position;
+            EndingVertex.SetPosition(_ending);
+            EndingVertex.Show();
+            BeginningVertex.Rotate = false;
             UpdateLine();
             UpdateCollider();
         }
     }
-    public Vector2 BeginningWp
-    {
-        get => (Vector2)transform.position + _beginning;
-    }
-    public Vector2 EndWp
-    {
-        get => (Vector2)transform.position + _ending;
-    }
+    public Vector2 BeginningWp { get => (Vector2)transform.position + _beginning; }
+    public Vector2 EndWp { get => (Vector2)transform.position + _ending; }
+    public Color Color;
 
     private Vector2 _beginning;
     private Vector2 _ending;
@@ -61,12 +64,23 @@ public abstract class BaseWorldTape : MonoBehaviour
         points.Add(End);
         _collider.SetPoints(points);
     }
+    public void UpdateColors()
+    {
+        _renderer.startColor = Color;
+        _renderer.endColor = Color;
+        BeginningVertex.SetColor(Color);
+        EndingVertex.SetColor(Color);
+    }
 
     #region Unity callbacks
     private void Awake()
     {
         _renderer = GetComponent<LineRenderer>();
         _collider = GetComponent<EdgeCollider2D>();
+    }
+    private void Start()
+    {
+        UpdateColors();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -102,13 +116,5 @@ public abstract class BaseWorldTape : MonoBehaviour
         }
     }
     #endregion
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        Awake();
-        UpdateLine();
-        UpdateCollider();
-    }
-    #endif
 }
 

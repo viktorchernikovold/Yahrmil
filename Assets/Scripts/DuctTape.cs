@@ -18,7 +18,7 @@ public class DuctTape : MonoBehaviour
     /// <summary>
     /// Tells if duct tape is available for use.
     /// </summary>
-    public bool Available => !ModeRef.IsBusy;
+    public bool Available => !ModeRef.IsBusy && ModeRef.Length > 0;
     /// <summary>
     /// Gets active duct tape material.
     /// </summary>

@@ -7,7 +7,6 @@ public class uGUI_TapeMaterial : MonoBehaviour
     public Image Icon;
     public Text Title;
     public Text Length;
-    public Color[] Colors = new Color[4];
 
 
     void Start()
@@ -19,7 +18,7 @@ public class uGUI_TapeMaterial : MonoBehaviour
     }
     private void UpdateIcon(DuctTapeMaterial Material)
     {
-        Icon.color = Colors[DuctTapeRef.GetMaterialIndex(Material)];
+        Icon.color = DuctTapeRef.ModeRef.GetColor();
         Title.text = string.Format("{0} Tape", DuctTapeRef.ModeRef.Name);
         UpdateLength(0, DuctTapeRef.ModeRef.Length);
     }
