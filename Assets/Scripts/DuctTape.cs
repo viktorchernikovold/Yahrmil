@@ -48,7 +48,7 @@ public class DuctTape : MonoBehaviour
     }
     public void AltUse(){
         BaseTapeMode oldMode = ModeRef;
-        if (((byte)AllowedMaterials) == 0 || Available){
+        if (((byte)AllowedMaterials) == 0 || !Available){
             return;
         }
         do
@@ -62,7 +62,7 @@ public class DuctTape : MonoBehaviour
             CurrentMaterial = (DuctTapeMaterial)n;
         }
         while ((CurrentMaterial & AllowedMaterials) == 0);
-        ModeRef = ModeToRef(CurrentMaterial);
+        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
         if (oldMode != ModeRef)
         {
             oldMode.OnModeLeave();
@@ -71,9 +71,9 @@ public class DuctTape : MonoBehaviour
         }
     }
     #region Helpers
-    private BaseTapeMode ModeToRef(DuctTapeMaterial mode)
+    public int GetMaterialIndex(DuctTapeMaterial mode)
     {
-        return modes[Mathf.RoundToInt(Mathf.Log((byte)mode, 2))];
+        return Mathf.RoundToInt(Mathf.Log((byte)mode, 2));
     }
     #endregion
 
@@ -81,7 +81,7 @@ public class DuctTape : MonoBehaviour
     private void Awake()
     {
         modes = GetComponentsInChildren<BaseTapeMode>();
-        ModeRef = ModeToRef(CurrentMaterial);
+        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
         ModeRef.OnModePick();
         OnMaterialChange?.Invoke(CurrentMaterial);
     }
