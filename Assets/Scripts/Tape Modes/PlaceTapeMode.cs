@@ -8,14 +8,21 @@ public class PlaceTapeMode : BaseTapeMode
         RaycastHit2D hit = Physics2D.Raycast(pos, mousePosWp - pos, MaxDistance);
         if (hit != default(RaycastHit2D))
         {
-            switch (Progress)
+            if (!hit.collider.CompareTag("Tape"))
             {
-                case 0:
-                    Begin(hit.point);
-                    break;
-                case 1:
-                    End(hit.point);
-                    break;
+                switch (Progress)
+                {
+                    case 0:
+                        Begin(hit.point);
+                        break;
+                    case 1:
+                        End(hit.point);
+                        break;
+                }
+            }
+            else if (Progress == 1)
+            {
+                Interrupt();
             }
         }
         else if (Progress == 1)
