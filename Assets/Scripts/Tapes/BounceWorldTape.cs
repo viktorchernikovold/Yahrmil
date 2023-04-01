@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BounceWorldTape : BaseWorldTape
 {
-    public float BounceForce = 500;
+    public float BounceForce = 250;
     public float timer = 0;
     public void Update()
     {
@@ -13,7 +13,7 @@ public class BounceWorldTape : BaseWorldTape
     {
         // Do player bounce. Make sure bouncing function have cooldown
         // so if collider bug occurs then player won't fly out of the map.
-        if (timer > .2)
+        if (timer > 0.01)
         {
             player.UseRigidbody.AddForce(-contact.normal.normalized * BounceForce);
             player.UseRigidbody.AddForce(Physics2D.gravity);
