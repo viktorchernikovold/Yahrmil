@@ -18,6 +18,6 @@ public class PlayerModel : PlayerModule
         }
         Animator.SetBool("IsMoving", v > float.Epsilon);
         Animator.SetFloat("SpeedMultiplier", v / Player.Motor.MoveSpeed);
-        Animator.SetBool("IsGrounded", Player.GetModule<PlayerController>().IsGrounded);
+        Animator.SetBool("IsGrounded", Player.Motor.IsGrounded);
     }
 }
