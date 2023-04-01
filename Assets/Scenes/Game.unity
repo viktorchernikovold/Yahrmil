@@ -415,10 +415,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
   Colors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - r: 0
+    g: 0
+    b: 0
+    a: 0
+  - r: 0
+    g: 0
+    b: 0
+    a: 0
+  - r: 0
+    g: 0
+    b: 0
+    a: 0
+  - r: 0
+    g: 0
+    b: 0
+    a: 0
 --- !u!224 &633911541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -531,10 +543,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 774258666}
   Colors:
-  - {r: 0, g: 0.6233945, b: 1, a: 0}
-  - {r: 1, g: 0.68882424, b: 0, a: 0}
-  - {r: 0.8398786, g: 0.2588235, b: 1, a: 0}
-  - {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 0}
+  - r: 0
+    g: 0.6233945
+    b: 1
+    a: 0
+  - r: 1
+    g: 0.68882424
+    b: 0
+    a: 0
+  - r: 0.8398786
+    g: 0.2588235
+    b: 1
+    a: 0
+  - r: 0.8301887
+    g: 0.8301887
+    b: 0.8301887
+    a: 0
 --- !u!1001 &1333804501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,6 +566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6468090148309194807, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
+      propertyPath: AllowedMaterials
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7521397483377983309, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
       propertyPath: m_RootOrder
       value: 1

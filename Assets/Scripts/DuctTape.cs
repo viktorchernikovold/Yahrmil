@@ -48,7 +48,7 @@ public class DuctTape : MonoBehaviour
     }
     public void AltUse(){
         BaseTapeMode oldMode = ModeRef;
-        if (((byte)AllowedMaterials) == 0 || Available){
+        if (((byte)AllowedMaterials) == 0 || !Available){
             return;
         }
         do
@@ -96,6 +96,7 @@ public class DuctTape : MonoBehaviour
         {
             AltUse();
         }
+        Debug.Log(ModeRef.Name);
     }
     
     #endregion

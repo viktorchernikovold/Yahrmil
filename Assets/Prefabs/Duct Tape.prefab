@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b7d379b729b46f88c05078d34f8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveMode: 1
-  AvailableModes: 3
+  CurrentMaterial: 1
+  AllowedMaterials: 1
   ModeRef: {fileID: 0}
   shootOrigin: {fileID: 8510546421291982424}
 --- !u!212 &8928120720695183190
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Bounce
   Length: 15
   tapePrefab: {fileID: 1234190397262212320, guid: 10cd4a8cf8b47ec43922956cbfe5f926, type: 3}
 --- !u!114 &9092968045564002962
@@ -161,5 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0994d6edde8d943a9a0a29e2bf868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Accelerate
   Length: 15
   tapePrefab: {fileID: 0}
