@@ -1,20 +1,23 @@
+using System;
 using UnityEngine;
 
 public class PlayerModel : PlayerModule
 {
+    public Animator Animator;
     public bool FacingRight = true;
 
     public override void OnUpdate()
     {
         // use an EPSILON damnit!!
-        if (Input.GetAxisRaw("Horizontal") > float.Epsilon)
+        int i = Math.Sign(Input.GetAxisRaw("Horizontal"));
+        float v = Mathf.Abs(Player.UseRigidbody.velocity.x);
+        if (i != 0)
         {
-            FacingRight = true;
+            FacingRight = i == 1;
+            transform.localScale = new Vector2(i, 1);
         }
-        else if (Input.GetAxisRaw("Horizontal") < -float.Epsilon)
-        {
-            FacingRight = false;
-        }
-        transform.localScale = new Vector2(FacingRight ? -1 : 1, 1);
+        Animator.SetBool("IsMoving", v > float.Epsilon);
+        Animator.SetFloat("SpeedMultiplier", v / Player.Motor.MoveSpeed);
+        Animator.SetBool("IsGrounded", Player.GetModule<PlayerController>().IsGrounded);
     }
 }
