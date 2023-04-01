@@ -15,6 +15,6 @@ public class PlayerModel : PlayerModule
         {
             FacingRight = false;
         }
-        transform.localScale = new Vector2(FacingRight ? 1 : -1, 1);
+        transform.localScale = new Vector2(FacingRight ? -1 : 1, 1);
     }
 }
