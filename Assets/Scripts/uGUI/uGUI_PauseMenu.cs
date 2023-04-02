@@ -10,7 +10,7 @@ public class uGUI_PauseMenu : MonoBehaviour
     }
     public void Restart()
     {
-        // reload current level
+        GameManager.RestartLevel();
     }
     public void Exit()
     {

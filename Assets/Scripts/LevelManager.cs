@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     {
         if (ActiveLevel.IsEnding)
         {
-            
+            GoMenu();
         }
         else
         {
@@ -68,18 +68,29 @@ public class LevelManager : MonoBehaviour
         {
             ActiveController.OnFinish += OnFinish;
         }
-        
-
+    }
+    public static IEnumerator RestartLevel()
+    {
+        OnPreload?.Invoke();
+        yield return null;
+        main.StartCoroutine(LoadUnloadScenes(ActiveLevel.SceneName, ActiveLevel.SceneName));
+        yield return null;
+        OnLoaded?.Invoke();
     }
     private static IEnumerator LoadUnloadScenes(string previous, string next)
     {
         yield return null;
-        AsyncOperation load = SceneManager.LoadSceneAsync(next, LoadSceneMode.Additive);
         AsyncOperation unload = SceneManager.UnloadSceneAsync(previous);
-        while (!load.isDone || !unload.isDone)
+        while (!unload.isDone)
         {
             yield return null;
         }
+        AsyncOperation load = SceneManager.LoadSceneAsync(next, LoadSceneMode.Additive);
+        while (!load.isDone)
+        {
+            yield return null;
+        }
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(next));
     }
     private static IEnumerator LoadScene(string scene)
     {
@@ -90,6 +101,7 @@ public class LevelManager : MonoBehaviour
         {
             yield return null;
         }
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
     }
 
     private void Awake()

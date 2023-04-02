@@ -20,14 +20,7 @@ public class Player : MonoBehaviour
 
     private void InitSingleton()
     {
-        if (Main == null)
-        {
-            Main = this;
-        }
-        else if (Main != this)
-        {
-            Destroy(this.gameObject);
-        }
+        Main = this;
     }
     private void InitMods()
     {
