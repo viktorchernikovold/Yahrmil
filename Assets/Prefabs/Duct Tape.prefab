@@ -49,6 +49,7 @@ MonoBehaviour:
   CurrentMaterial: 1
   AllowedMaterials: 1
   ModeRef: {fileID: 0}
+  AllModes: []
   shootOrigin: {fileID: 8510546421291982424}
 --- !u!212 &8928120720695183190
 SpriteRenderer:
@@ -148,8 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bounce
-  Length: 15
-  MaxDistance: 10
+  MaxDistance: 4
   tapePrefab: {fileID: 1234190397262212320, guid: 10cd4a8cf8b47ec43922956cbfe5f926, type: 3}
 --- !u!114 &9092968045564002962
 MonoBehaviour:
@@ -164,6 +164,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Accelerate
-  Length: 15
-  MaxDistance: 10
+  MaxDistance: 4
   tapePrefab: {fileID: 2522687468829655155, guid: a7bdb0fdf82caa7468708df5cd174139, type: 3}

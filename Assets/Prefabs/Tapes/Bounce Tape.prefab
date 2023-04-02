@@ -51,7 +51,7 @@ MonoBehaviour:
   BeginningVertex: {fileID: 1544293709262118909}
   EndingVertex: {fileID: 5877649787389581348}
   Color: {r: 0, g: 0.6117647, b: 1, a: 1}
-  BounceForce: 200
+  BounceForce: 500
   timer: 0
 --- !u!120 &7084786626735278935
 LineRenderer:
