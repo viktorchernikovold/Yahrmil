@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bounce
-  MaxDistance: 4
+  MaxDistance: 2
   tapePrefab: {fileID: 1234190397262212320, guid: 10cd4a8cf8b47ec43922956cbfe5f926, type: 3}
 --- !u!114 &9092968045564002962
 MonoBehaviour:
@@ -164,5 +164,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Accelerate
-  MaxDistance: 4
+  MaxDistance: 2
   tapePrefab: {fileID: 2522687468829655155, guid: a7bdb0fdf82caa7468708df5cd174139, type: 3}
