@@ -18,19 +18,22 @@ public class DuctTape : MonoBehaviour
     /// <summary>
     /// Tells if duct tape is available for use.
     /// </summary>
-    public bool Available => ModeRef.IsBusy;
+    public bool Available => !ModeRef.IsBusy && ModeRef.Length > 0;
     /// <summary>
-    /// Gets active duct tape mode.
+    /// Gets active duct tape material.
     /// </summary>
-    public DuctTapeMode ActiveMode /*{ get; private set; }*/ = DuctTapeMode.Bounce;
+    public DuctTapeMaterial CurrentMaterial /*{ get; private set; }*/ = DuctTapeMaterial.Bounce;
     /// <summary>
-    /// Available modules for use.
+    /// Available materials for use.
     /// </summary>
-    public DuctTapeMode AvailableModes = DuctTapeMode.Bounce;
+    public DuctTapeMaterial AllowedMaterials = DuctTapeMaterial.Bounce;
     /// <summary>
     /// Gets a reference to the active module.
     /// </summary>
     public BaseTapeMode ModeRef /*{ get; private set; }*/ = null;
+
+    public event Action<int, int> OnLengthChange;
+    public event Action<DuctTapeMaterial> OnMaterialChange;
 
     [SerializeField] Transform shootOrigin;
     BaseTapeMode[] modes;
@@ -39,30 +42,41 @@ public class DuctTape : MonoBehaviour
     public void Use(){
         if (Available)
         {
-            ModeRef.Shoot(Vector2.zero);
+            Vector2 mp = Input.mousePosition;
+            mp = Camera.main.ScreenToWorldPoint(mp);
+            ModeRef.Shoot(mp);
         }
     }
     public void AltUse(){
-        if (((byte)AvailableModes) == 0 || Available){
+        BaseTapeMode oldMode = ModeRef;
+        if (((byte)AllowedMaterials) == 0 || !Available){
             return;
         }
         do
         {
-            byte n = (byte)ActiveMode;
+            byte n = (byte)CurrentMaterial;
             n *= 2;
             if (n > 8)
             {
                 n = 1;
             }
-            ActiveMode = (DuctTapeMode)n;
+            CurrentMaterial = (DuctTapeMaterial)n;
         }
-        while ((ActiveMode & AvailableModes) == 0);
-        ModeRef = ModeToRef(ActiveMode);
+        while ((CurrentMaterial & AllowedMaterials) == 0);
+        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
+        if (oldMode != ModeRef)
+        {
+            oldMode.OnLengthChange -= OnLengthChange;
+            oldMode.OnModeLeave();
+            OnMaterialChange?.Invoke(CurrentMaterial);
+            ModeRef.OnModePick();
+            ModeRef.OnLengthChange += OnLengthChange;
+        }
     }
     #region Helpers
-    private BaseTapeMode ModeToRef(DuctTapeMode mode)
+    public int GetMaterialIndex(DuctTapeMaterial mode)
     {
-        return modes[Mathf.RoundToInt(Mathf.Log((byte)mode, 2))];
+        return Mathf.RoundToInt(Mathf.Log((byte)mode, 2));
     }
     #endregion
 
@@ -70,9 +84,12 @@ public class DuctTape : MonoBehaviour
     private void Awake()
     {
         modes = GetComponentsInChildren<BaseTapeMode>();
-        ModeRef = ModeToRef(ActiveMode);
+        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
+        ModeRef.OnModePick();
+        ModeRef.OnLengthChange += OnLengthChange;
+        OnMaterialChange?.Invoke(CurrentMaterial);
     }
-    /* 
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -84,11 +101,11 @@ public class DuctTape : MonoBehaviour
             AltUse();
         }
     }
-    */
+    
     #endregion
 }
 [Flags]
-public enum DuctTapeMode : byte {
+public enum DuctTapeMaterial : byte {
     Bounce = 1 << 0,
     Speed = 1 << 1,
     Hook = 1 << 2,
