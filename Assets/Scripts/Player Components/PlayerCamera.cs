@@ -9,7 +9,6 @@ public class PlayerCamera : PlayerModule
     private void Start()
     {
         offset = player.transform.position - transform.position;
-        Debug.Log(offset);
     }
 
     void Update()
