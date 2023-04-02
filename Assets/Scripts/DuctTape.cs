@@ -11,7 +11,7 @@ public class DuctTape : MonoBehaviour
         get 
         {
             int l = 0;
-            foreach(BaseTapeMode m in modes) l += m.Length;
+            foreach(BaseTapeMode m in AllModes) l += m.Length;
             return l;
         }
     }
@@ -31,12 +31,12 @@ public class DuctTape : MonoBehaviour
     /// Gets a reference to the active module.
     /// </summary>
     public BaseTapeMode ModeRef /*{ get; private set; }*/ = null;
+    public BaseTapeMode[] AllModes;
 
     public event Action<int, int> OnLengthChange;
     public event Action<DuctTapeMaterial> OnMaterialChange;
 
     [SerializeField] Transform shootOrigin;
-    BaseTapeMode[] modes;
 
     
     public void Use(){
@@ -63,7 +63,7 @@ public class DuctTape : MonoBehaviour
             CurrentMaterial = (DuctTapeMaterial)n;
         }
         while ((CurrentMaterial & AllowedMaterials) == 0);
-        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
+        ModeRef = AllModes[GetMaterialIndex(CurrentMaterial)];
         if (oldMode != ModeRef)
         {
             oldMode.OnLengthChange -= OnLengthChange;
@@ -83,8 +83,8 @@ public class DuctTape : MonoBehaviour
     #region Unity callbacks
     private void Awake()
     {
-        modes = GetComponentsInChildren<BaseTapeMode>();
-        ModeRef = modes[GetMaterialIndex(CurrentMaterial)];
+        AllModes = GetComponentsInChildren<BaseTapeMode>();
+        ModeRef = AllModes[GetMaterialIndex(CurrentMaterial)];
         ModeRef.OnModePick();
         ModeRef.OnLengthChange += OnLengthChange;
         OnMaterialChange?.Invoke(CurrentMaterial);
