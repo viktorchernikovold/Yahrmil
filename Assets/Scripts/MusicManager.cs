@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
     [Header("Snapshots")]
     public AudioMixerSnapshot Paused;
     public AudioMixerSnapshot Unpaused;
-    public static Biome CurrentBiome;
+    public static Biome CurrentBiome = Biome.Victory;
     private AudioSource _source;
 
 

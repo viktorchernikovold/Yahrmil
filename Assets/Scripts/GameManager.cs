@@ -33,6 +33,25 @@ public class GameManager : MonoBehaviour
         Playing = false;
         Paused = false;
     }
+    public static void RestartLevel()
+    {
+        if (Playing)
+        {
+            main.StartCoroutine(LevelManager.RestartLevel());
+            Paused = false;
+        }
+    }
+    public static void FinishLevel()
+    {
+        if (LevelManager.ActiveLevel.IsEnding)
+        {
+            EndGame();
+        }
+        else
+        {
+            main.StartCoroutine(LevelManager.NextLevel());
+        }
+    }
     public static void Pause() => Paused = true;
     public static void Unpause() => Paused = false;
 
