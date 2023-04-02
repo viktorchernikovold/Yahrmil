@@ -779,11 +779,6 @@ MonoBehaviour:
   Icon: {fileID: 774258666}
   Title: {fileID: 1159045898}
   Length: {fileID: 436419480}
-  Colors:
-  - {r: 0, g: 0.6099918, b: 1, a: 1}
-  - {r: 1, g: 0.6154237, b: 0, a: 1}
-  - {r: 0.81868225, g: 0.24056602, b: 1, a: 1}
-  - {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
 --- !u!1 &1645902906
 GameObject:
   m_ObjectHideFlags: 0
