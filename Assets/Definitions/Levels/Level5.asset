@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Level5
   m_EditorClassIdentifier: 
   _sceneName: Level5
+  _biome: 2
   _allowedMaterials: 3
   _materialsAmount: 0f0000000f0000000100000001000000
   _cinematic: 0
-  _nextLevel: {fileID: 11400000, guid: 650ad1cc48270704e84b1a895209d917, type: 2}
+  _nextLevel: {fileID: 0}
   _previousLevel: {fileID: 11400000, guid: 94baf58cca6e6ae4d9969ce9d63ace3d, type: 2}

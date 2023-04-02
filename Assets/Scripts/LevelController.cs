@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public static LevelController Active;
     public LevelDefinition Definition => definition;
-
+    public event Action OnFinish;
 
     public void SetupDuctTape()
     {
@@ -15,10 +17,18 @@ public class LevelController : MonoBehaviour
             tape.AllModes[j].Length = Definition.MaterialsAmount[j];
         }
     }
-
+    public void Finish()
+    {
+        OnFinish?.Invoke();
+    }
     private void Start()
     {
         SetupDuctTape();
+        MusicManager.SetBiome(Definition.Biome);
+    }
+    private void Awake()
+    {
+        Active = this;
     }
 
 

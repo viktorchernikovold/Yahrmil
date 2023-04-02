@@ -9,7 +9,7 @@ public class uGUI_TapeMaterial : MonoBehaviour
     public Text Length;
 
 
-    void Start()
+    private void Start()
     {
         DuctTapeRef = Player.Main.DuctTape;
         DuctTapeRef.OnMaterialChange += UpdateIcon;

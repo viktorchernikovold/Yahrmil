@@ -14,18 +14,18 @@ public class uGUI_PauseMenu : MonoBehaviour
     }
     public void Exit()
     {
-        // load main menu
+        GameManager.EndGame();
     }
 
     private void Update()
     {
-        if (true)
+        if (GameManager.Playing)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameManager.Paused = !GameManager.Paused;
-                content.SetActive(GameManager.Paused);
             }
         }
+        content.SetActive(GameManager.Paused);
     }
 }

@@ -6,7 +6,7 @@ public class uGUI_MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-
+        GameManager.BeginGame();
     }
     public void ShowCredits()
     {
@@ -19,5 +19,9 @@ public class uGUI_MainMenu : MonoBehaviour
 #else
         Application.Quit;
 #endif
+    }
+    private void Start()
+    {
+        MusicManager.SetBiome(Biome.Default);
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   _sceneName: Level2
+  _biome: 1
   _allowedMaterials: 1
   _materialsAmount: 0f000000010000000100000001000000
   _cinematic: 0

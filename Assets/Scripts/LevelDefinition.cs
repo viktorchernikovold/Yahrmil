@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelDefinition : ScriptableObject
 {
     public string SceneName => _sceneName;
+    public Biome Biome => _biome;
     public DuctTapeMaterial AllowedMaterials => _allowedMaterials;
     public int[] MaterialsAmount => _materialsAmount;
     public bool Cinematic => _cinematic;
@@ -14,6 +15,7 @@ public class LevelDefinition : ScriptableObject
 
     [Header("Settings")]
     [SerializeField] string _sceneName;
+    [SerializeField] Biome _biome;
     [SerializeField] DuctTapeMaterial _allowedMaterials;
     [SerializeField] int[] _materialsAmount = new int[4];
     [SerializeField] bool _cinematic;
