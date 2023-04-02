@@ -14,11 +14,7 @@ public class uGUI_MainMenu : MonoBehaviour
     }
     public void Quit()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit;
-#endif
+        Application.Quit();
     }
     private void Start()
     {

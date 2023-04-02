@@ -15,7 +15,7 @@ MonoBehaviour:
   _sceneName: Level2
   _biome: 1
   _allowedMaterials: 1
-  _materialsAmount: 0f000000010000000100000001000000
+  _materialsAmount: 16000000010000000100000001000000
   _cinematic: 0
   _nextLevel: {fileID: 11400000, guid: 31087ce24554c9a4fb73f03e59fbc48c, type: 2}
   _previousLevel: {fileID: 11400000, guid: 8463074e37b564e4a874d057a17b457a, type: 2}
