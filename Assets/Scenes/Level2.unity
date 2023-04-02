@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 788648448}
   - component: {fileID: 788648447}
   m_Layer: 0
-  m_Name: Grid (1)
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7521397483377983309, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7521397483377983309, guid: a64e5d3217ba58649a5619674eecc525, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7179,7 +7179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5433684437304314770, guid: 238f12b74b097b2429c57466fa6710eb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5433684437304314770, guid: 238f12b74b097b2429c57466fa6710eb, type: 3}
       propertyPath: m_LocalPosition.x
