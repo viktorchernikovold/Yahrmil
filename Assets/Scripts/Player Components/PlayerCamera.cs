@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerCamera : PlayerModule
 {
-    public Transform player;
-    public Vector3 offset;
+    [SerializeField] Transform player;
+    private Vector3 offset;
+    private void Start()
+    {
+        offset = player.transform.position - transform.position;
+    }
+
     void Update()
     {
-        transform.position = new Vector3(player.position.x + offset.x, offset.y, -10);
+        transform.position = new Vector3(player.position.x + offset.x, player.position.y - offset.y, -offset.z);
     }
 }
